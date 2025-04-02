@@ -5,3 +5,7 @@ background: #e8d8c9;
 details {
 background: #FFFFFF;
 }
+
+p {
+    font-size: 200%;
+}
