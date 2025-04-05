@@ -2,11 +2,16 @@ html{
 background: #e8d8c9;
 }
 
+.mainbody{
+margin: 12px;
+}
+
 details {
 background: #FFFFFF;
 }
 
-p {
+.word {
     font-family: "メイリオ","Hiragino Kaku Gothic Pro",Meiryo,"ヒラギノ角ゴ Pro W3","MS PGothic","MS UI Gothic",Helvetica,Arial,sans-serif;
-    font-size: 200%;
+    font-size: 230%;
+    margin: revert;
 }
