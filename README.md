@@ -1,49 +1,54 @@
-As mentioned [[Problems with transforming normals(Transpose of inverse of matrix M)|previously]], transforming normals with the transpose of the inverse of the transformation matrix isn't quite the correct solution even though it is the prominent method used.
-
 A better condition to derive the matrix X required to maintain the properties of a normal is to use the cross product formula.
+
 $$
 n = t\times b
 $$
+
 Then this should be true,
+
 $$
 Xn = Mt\times Mb
 $$
+
 ==//TODO Move this line into a note about matrix multiplication, perhaps with notes on column major vs row major==
-$$
-\begin{bmatrix}
+```math
+$$\begin{bmatrix}
 m_{00} & m_{01} & m_{02}\\
 m_{10} & m_{11} & m_{12}\\
-m_{20} & m_{21} & m_{22}\\
+m_{20} & m_{21} & m_{22}
 \end{bmatrix} 
 \begin{bmatrix}
 t_x \\
 t_y \\
-t_z \\
+t_z 
 \end{bmatrix} 
 =
 \begin{bmatrix}
 m_{00} t_x & m_{01} t_y & m_{02} t_z\\
 m_{10} t_x & m_{11} t_y & m_{12} t_z\\
-m_{20} t_x & m_{21} t_y & m_{22} t_z\\
+m_{20} t_x & m_{21} t_y & m_{22} t_z
 \end{bmatrix} 
 =
 \begin{bmatrix}
 m_{00}\\
 m_{10}\\
-m_{20}\\
+m_{20}
 \end{bmatrix} t_x +
 \begin{bmatrix}
 m_{01}\\
 m_{11}\\
-m_{21}\\
+m_{21}
 \end{bmatrix} t_y +
 \begin{bmatrix}
 m_{02}\\
 m_{12}\\
-m_{22}\\
+m_{22}
 \end{bmatrix} t_z
 $$
+```
+
 Let M\[n] be the nth column of the matrix M,
+
 $$
 Xn = (t_xM_{[0]}+t_yM_{[1]}+t_zM_{[2]})\times (b_xM_{[0]}+b_yM_{[1]}+b_zM_{[2]})
 $$
@@ -72,7 +77,7 @@ Xn = &(t_xb_x(M_{[0]}\times M_{[0]}) + t_xb_y(M_{[0]}\times M_{[1]}) + t_xb_z (M
 &(t_zb_x(M_{[2]}\times M_{[0]}) + t_zb_y(M_{[2]}\times M_{[1]}) + t_zb_z(M_{[2]}\times M_{[2]}))
 \end{align}
 $$
-A vector [[Dot product and cross product|cross product]] with itself results in $0$ so some of the terms fall out,
+A vector cross product with itself results in $0$ so some of the terms fall out,
 $$
 \begin{align}
 Xn = &t_xb_y(M_{[0]}\times M_{[1]}) + t_xb_z (M_{[0]}\times M_{[2]})+ \\
@@ -147,15 +152,19 @@ $$
 
 
 #### Examining the difference between using the transpose of the inverse and the adjugate transpose.
+
 $$
 M^{-1}=\frac{adj(M)}{det(M)}
 $$
+
 $$
 cof(M)=adj(M)^T
 $$
+
 $$
 cof(M)=det(M)(M^{-1})^T
 $$
+
 This explains why simply using the transpose of the inverse of M was not sufficient since the $det(M)$ contribution is missing. For $det(M) < 0$ the sign would be flipped.  
 
 
